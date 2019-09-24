@@ -7,7 +7,7 @@
 
 ## How to start a server:
 1. Clone or download repository to your local machine
-2. Open root folder and run command ```dep ensure```
+2. Open ```src``` folder and run command ```dep ensure```
 3. Set up config file - provide port and Postgres credential, f.e.:
 ```
 {
