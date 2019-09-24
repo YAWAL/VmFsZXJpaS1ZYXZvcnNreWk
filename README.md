@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/YAWAL/)](https://travis-ci.org/YAWAL/)
-
 # GWP 
 
 ## Prerequisites:
