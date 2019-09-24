@@ -1,0 +1,10 @@
+{
+    "host": ":9999",
+    "database": {
+        "dialect": "dialect",
+        "user": "user",
+        "db_name": "db_name",
+        "ssl_mode": "ssl_mode",
+        "password": "password"
+    }
+}

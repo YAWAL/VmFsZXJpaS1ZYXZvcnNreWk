@@ -1,0 +1,10 @@
+{
+    "host_": ":9999",
+    "data_base": {
+        "dialect": "dialect",
+        "invalid_field": 42,
+        "user_": "user",
+        "_db_name": "db_name",
+        "pass": "password"
+    },
+}
