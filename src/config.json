@@ -1,0 +1,10 @@
+{
+    "host": ":8080",
+    "database": {
+        "dialect": "postgres",
+        "user": "yourPostgresUser",
+        "db_name": "yourDatabaseName",
+        "ssl_mode": "disable",
+        "password": "yourPostgresPassword"
+    }
+}
