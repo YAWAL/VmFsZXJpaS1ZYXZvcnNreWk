@@ -151,53 +151,6 @@ func TestWorker_SaveDownloadHispory(t *testing.T) {
 	}
 }
 
-// func TestWorker_DoRequest(t *testing.T) {
-
-// 	repoMock := &mocks.Repository{}
-// 	var cl *http.Client
-// 	var responce string
-
-// 	tests := []struct {
-// 		name      string
-// 		w         Worker
-// 		url       string
-// 		urlDataID int64
-// 		want      model.DownloadHistory
-// 	}{
-// 		{
-// 			name:      "string",
-// 			url:       "http://blog.golang.org/cover",
-// 			urlDataID: 1,
-// 			want: model.DownloadHistory{
-// 				ID:        1,
-// 				URLDataID: 1,
-// 				Response:  &responce,
-// 				Duration:  1,
-// 				CreatedAt: 1,
-// 			},
-// 		},
-// 	}
-// 	w := Worker{cl: cl, repo: repoMock}
-
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			fmt.Println(tt.url)
-// 			fmt.Println(tt.urlDataID)
-
-// 			got := w.DoRequest(tt.url, tt.urlDataID)
-
-// 			t.Log(got)
-// 			if !reflect.DeepEqual(got, tt.want) {
-// 				t.Errorf("Worker.DoRequest() = %v, want %v", got, tt.want)
-// 			}
-
-// 		})
-// 	}
-// }
-
-// go test -coverprofile=cov.out
-// go tool cover -html=cov.out
-
 func TestWorker_DoRequest_(t *testing.T) {
 
 	repoMock := &mocks.Repository{}
@@ -269,10 +222,6 @@ func TestWorker_DoRequest_(t *testing.T) {
 		w := Worker{cl: server.Client(), repo: repoMock}
 
 		got := w.DoRequest(tt.url, tt.want.URLDataID)
-
-		// resp := got.Response
-
-		// fmt.Printf("%v", *resp)
 		equals(t, tt.want.ID, got.ID)
 		equals(t, tt.want.URLDataID, got.URLDataID)
 
