@@ -61,24 +61,14 @@ func (pg PostgresRepository) GetAllURLData() (data []model.URLData, err error) {
 	return data, nil
 }
 
-func (pg PostgresRepository) GetDownloadHistoriesByURLDataID(id string) (downloadHistory []model.DownloadHistory, err error) {
+func (pg PostgresRepository) GetDownloadHistoriesByURLDataID(ID string) (downloadHistory []model.DownloadHistory, err error) {
 	// find by url_data_id
-	if err = pg.conn.Where("url_data_id = ?", id).Find(&downloadHistory).Error; err != nil {
+	if err = pg.conn.Where("url_data_id = ?", ID).Find(&downloadHistory).Error; err != nil {
 		return nil, err
 	}
 	return downloadHistory, nil
 }
 
 func (pg PostgresRepository) SaveDownloadHistory(downloadHistory model.DownloadHistory) (err error) {
-	if err = pg.conn.Create(&downloadHistory).Error; err != nil {
-		return err
-	}
-	return nil
-}
-
-func (pg PostgresRepository) existURLData(data *model.URLData) bool {
-	if err := pg.conn.First(data).Error; err != nil {
-		return false
-	}
-	return true
+	return pg.conn.Create(&downloadHistory).Error
 }
