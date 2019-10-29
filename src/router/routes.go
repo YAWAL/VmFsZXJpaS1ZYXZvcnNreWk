@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func InitRouter(er database.Repository, w worker.Worker) (r *mux.Router) {
+func New(er database.Repository, w worker.Worker) (r *mux.Router) {
 	r = mux.NewRouter()
 	api := r.PathPrefix("/api").Subrouter()
 	api.HandleFunc("/fetcher", handlers.SaveURLData(er, w)).Methods(http.MethodPost)
