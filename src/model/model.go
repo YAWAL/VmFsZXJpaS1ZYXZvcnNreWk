@@ -7,7 +7,7 @@ type URLData struct {
 }
 
 type DownloadHistory struct {
-	ID int64 `json:"id"  gorm:"PRIMARY_KEY"`
+	ID        int64   `json:"id"  gorm:"PRIMARY_KEY"`
 	URLDataID int64   `json:"urldata_id"`
 	Response  *string `json:"response"`
 	Duration  float64 `json:"duration"  gorm:"type:numeric(4,3)"`
@@ -21,9 +21,5 @@ type RenderedDownloadHistory struct {
 }
 
 type SaveURLDataResponse struct {
-	ID int64 `json:"id"`
-}
-
-type GetAllURLDataResponse struct {
 	ID int64 `json:"id"`
 }
