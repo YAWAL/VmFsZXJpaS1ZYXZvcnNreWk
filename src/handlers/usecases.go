@@ -58,7 +58,7 @@ func SaveURLData(repo database.Repository, wrk worker.Worker) func(http.Response
 				select {
 				case <-ticker.C:
 					dwnldHistory := wrk.DoRequest(urlData.URL, savedID)
-					err = wrk.SaveDownloadHispory(dwnldHistory)
+					err = wrk.SaveDownloadHistory(dwnldHistory)
 					if err != nil {
 						logging.Log.Errorf(savingDataError, err.Error())
 					}
@@ -80,14 +80,14 @@ func DeleteURLData(repo database.Repository) func(http.ResponseWriter, *http.Req
 		vars := mux.Vars(r)
 		stringID := vars[idKey]
 
-		intID, err := strconv.ParseInt(stringID, 10, 64)
+		ID, err := strconv.ParseInt(stringID, 10, 64)
 		if err != nil {
 			logging.Log.Error(err)
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
 
-		if err = repo.DeleteURLData(intID); err != nil {
+		if err = repo.DeleteURLData(ID); err != nil {
 			if err.Error() == NotFoundKey {
 				w.WriteHeader(http.StatusNotFound)
 				return
