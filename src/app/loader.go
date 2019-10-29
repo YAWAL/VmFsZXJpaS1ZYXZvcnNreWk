@@ -26,7 +26,6 @@ type URLservis struct {
 // performs initial table migrations, initializes Postgres repository, initializes routers
 // and creates server
 func LoadApp(file string) (servis *URLservis, err error) {
-	// func LoadApp(file string) (srv *http.Server, err error) {
 	// read, config
 	conf, err := config.ReadConfig(file)
 	if err != nil {
@@ -49,13 +48,13 @@ func LoadApp(file string) (servis *URLservis, err error) {
 
 	// create HTTP client with timeout
 	cl := &http.Client{
-		Timeout: worker.WorkerTimeout * time.Second,
+		Timeout: worker.Timeout * time.Second,
 	}
 	// init worker
-	worker := worker.NewWorker(cl, repo)
+	worker := worker.New(cl, repo)
 
 	// init routers
-	r := router.InitRouter(repo, worker)
+	r := router.New(repo, worker)
 	logging.Log.Infof("Initializing routers")
 
 	srv := &http.Server{
