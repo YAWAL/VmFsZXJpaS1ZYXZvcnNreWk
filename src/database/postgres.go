@@ -19,5 +19,5 @@ func PGconn(conf Config) (db *gorm.DB, err error) {
 		return nil, err
 	}
 	logging.Log.Info("Connection to Postgres has been established")
-	return db, err
+	return db, nil
 }
